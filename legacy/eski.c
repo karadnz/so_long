@@ -1,3 +1,75 @@
+
+
+
+
+
+int	key_event(int keycode, t_data **data)
+{
+	char		*t;
+	char		*nbr;
+
+	find_pos(data, 'P', (*data)->map->str);
+	if (keycode == 0 || keycode == 123)
+		ft_key_left(data);
+	if (keycode == 1 || keycode == 125)
+		ft_key_down(data);
+	if (keycode == 2 || keycode == 124)
+		ft_key_right(data);
+	if (keycode == 13 || keycode == 126)
+		ft_key_up(data);
+	put_image((*data));
+	if (keycode == 53)
+		map_format_error(-1);
+	if ((*data)->move != (*data)->movenew)
+		printf_move(data);
+	nbr = ft_itoa((*data)->move);
+	t = ft_strjoin("MOVE : ", nbr);
+	mlx_string_put((*data)->mlx, (*data)->win, 10, 30, 250000 \
+	*(*data)->move, t);
+	free(nbr);
+	free(t);
+	return (0);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 int	main5(void)
 {
 	void	*mlx;
