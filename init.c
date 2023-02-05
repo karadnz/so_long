@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:54:21 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 07:16:18 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/05 07:34:31 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	init_window(t_window *window, t_img *img)
 	window->wall = mlx_xpm_file_to_image(window->mlx, "assets/wall.xpm", &window->img_width, &window->img_height);
 
 
-	img->bg = mlx_xpm_file_to_image(window->mlx, "assets/grass2.xpm", &img->img_width, &img->img_height);
-	img->wall = mlx_xpm_file_to_image(window->mlx, "assets/wall.xpm", &img->img_width, &img->img_height);
+	img->bg = mlx_xpm_file_to_image(window->mlx, "assets/stone.xpm", &img->img_width, &img->img_height);
+	img->wall = mlx_xpm_file_to_image(window->mlx, "assets/wall2.xpm", &img->img_width, &img->img_height);
 	img->coin = mlx_xpm_file_to_image(window->mlx, "assets/coin.xpm", &img->img_width, &img->img_height);
 	img->player_right = mlx_xpm_file_to_image(window->mlx, "assets/cat_right.xpm", &img->img_width, &img->img_height);
 	img->player_left = mlx_xpm_file_to_image(window->mlx, "assets/cat_left.xpm", &img->img_width, &img->img_height);

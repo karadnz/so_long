@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:42:26 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 07:01:27 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/05 07:37:39 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,8 +177,8 @@ int	is_matris(char *str, t_window *window)
 	window->column = column - 1; //minus \n
 	window->row = row;
 	window->map = (char **)malloc(sizeof(char *) * i);
-	window->window_width = (column - 1) * 64;
-	window->window_height = row * 64;
+	window->window_width = (column - 1) * IMG;
+	window->window_height = row * IMG;
 	close(fd);
 	return (i);
 }

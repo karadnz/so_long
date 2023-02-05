@@ -6,12 +6,14 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 07:16:32 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/05 07:36:39 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+
+# define IMG 100 
 
 # include "mlx/mlx.h"
 # include "gnl/get_next_line.h"
