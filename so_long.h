@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 07:12:10 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/05 07:16:32 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_img
 	void	*player_right;
 	void	*player_left;
 	void	*exit;
+	void	*exit_open;
 
 	int		img_width;
 	int		img_height;

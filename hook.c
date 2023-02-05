@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 03:29:31 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 07:12:40 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/05 07:21:41 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,12 @@ void	left_handle(t_window *window)
 					if (window->map[i][j - 1] == 'E')
 					{
 						if (can_exit(window))
+						{
+							window->move_count++;
+							printf("Adim sayisi: %d\n", window->move_count);
 							exit(1);
+						}
+							
 					}
 					else if (window->map[i][j - 1] != '1')
 					{
@@ -208,7 +213,6 @@ int	can_exit(t_window *window)
 		//printf("\n");
 		i++;
 	}
-	window->move_count++;
-	printf("Adim sayisi: %d\n", window->move_count);
+	
 	return (1);
 }
