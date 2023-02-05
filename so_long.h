@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 06:35:34 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/05 07:12:10 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,26 @@
 # include <stdlib.h> //
 
 
+typedef struct s_img
+{
+	void	*bg;
+	void	*wall;
+	void	*coin;
+	void	*player_right;
+	void	*player_left;
+	void	*exit;
+
+	int		img_width;
+	int		img_height;
+	int		look;
+
+}	t_img;
+
 typedef struct s_window
 {
 	void	*mlx;
 	void	*mlx_win;
-	void	*img;
+	t_img	*img;
 
 	void	*bg;
 	void	*wall;
@@ -48,18 +63,7 @@ typedef struct s_window
 
 }	t_window;
 
-typedef struct s_img
-{
-	void	*bg;
-	void	*wall;
-	void	*coin;
-	void	*player;
-	void	*exit;
 
-	int		img_width;
-	int		img_height;
-
-}	t_img;
 
 
 static int	game_loop(t_window *a);
@@ -76,7 +80,7 @@ int	is_walls_ok(t_window *window);
 void	init_matris(char *str, t_window *window);
 int	is_pec(char c);
 int	is_matris(char *str, t_window *window);
-void ft_err(int i);
+int ft_err(int i);
 
 
 //check utils

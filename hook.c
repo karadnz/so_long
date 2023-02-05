@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 03:29:31 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 06:56:52 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/05 07:12:40 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ void	right_handle(t_window *window)
 
 	i = 0;
 	j = 0;
+	window->img->look = 0;
 	while (i < window->row)
 	{
 		j = 0;
@@ -154,6 +155,7 @@ void	left_handle(t_window *window)
 
 	i = 0;
 	j = 0;
+	window->img->look = 1;
 	while (i < window->row)
 	{
 		j = 0;

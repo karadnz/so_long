@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:42:26 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 06:55:12 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/05 07:01:27 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,20 @@ int	map_check(int ac, char **av, t_window *window)
 	return (1);
 }
 
-void	ft_err(int i)
+int	ft_err(int i)
 {
 	if (i == -1)
 		write(1, "Error at argc", 13);
-	if (i == 0)
+	else if (i == 0)
 		write(1, "Error at .ber\n", 14);
-	if (i == 1)
+	else if (i == 1)
 		write(1, "Error at is matris\n", 19);
-	if (i == 2)
+	else if (i == 2)
 		write(1, "Error at valid char\n", 20);
-	if (i == 3)
+	else if (i == 3)
 		write(1, "Error at walls ok\n", 18);
+	else
+		write(1, "cikis!\n",7);
 	exit(1);
 }
 
