@@ -6,12 +6,11 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:42:26 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 06:40:00 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/05 06:55:12 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 int	map_check(int ac, char **av, t_window *window)
 {
@@ -35,7 +34,7 @@ int	map_check(int ac, char **av, t_window *window)
 	return (1);
 }
 
-void ft_err(int i)
+void	ft_err(int i)
 {
 	if (i == -1)
 		write(1, "Error at argc", 13);
@@ -47,59 +46,51 @@ void ft_err(int i)
 		write(1, "Error at valid char\n", 20);
 	if (i == 3)
 		write(1, "Error at walls ok\n", 18);
-
 	exit(1);
-
 }
+
 int	is_walls_ok(t_window *window)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	**map;
 
 	i = 0;
 	j = 0;
 	map = window->map;
-
 	while (j < window->column)
 	{
 		if (map[0][j] != '1' || map[window->row - 1][j] != '1')
 			return (0);
 		j++;
 	}
-
 	while (i < window->row)
 	{
 		if (map[i][0] != '1' || map[i][window->column - 1] != '1')
 			return (0);
 		i++;
 	}
-
 	return (1);
 }
 
-int is_valid_char(t_window *window)
+int	is_valid_char(t_window *window)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-
 	while (i < window->row)
 	{
 		j = 0;
 		while (j < window->column)
 		{
-			
 			if (!is_pec(window->map[i][j]))
 			{
 				//printf("$%c$",window->map[i][j]);
 				//printf("$i:%d  j:%d, str:%s,$",i,j,window->map[i]);
 				return (0);
-
 			}
-				
 			j++;
 		}
 		//printf("%s",window->map[i]);
@@ -111,11 +102,11 @@ int is_valid_char(t_window *window)
 
 void	init_matris(char *str, t_window *window)
 {
-	printf("hitINIT\n");
 	char	*iter;
-	int	fd;
-	int	i;
+	int		fd;
+	int		i;
 
+	printf("hitINIT\n");
 	fd = open(str, O_RDWR);
 	if (!fd)
 		return ;
@@ -126,19 +117,13 @@ void	init_matris(char *str, t_window *window)
 		window->map[i] = get_row(iter);
 		//printf("%s, %d\n",window->map[i], i);
 		free(iter);
-		
 		iter = get_next_line(fd);
-		
 		i++;
 	}
-
 	close(fd);
-
 }
 
-
-
-int is_ber(char *str)
+int	is_ber(char *str)
 {
 	int	len;
 	int	fd;
@@ -159,11 +144,11 @@ int is_ber(char *str)
 
 int	is_matris(char *str, t_window *window)
 {
-	int	column;
-	int	row;
-	int fd;
-	char *iter;
-	int	i;
+	int		column;
+	int		row;
+	int		fd;
+	char	*iter;
+	int		i;
 
 	fd = open(str, O_RDWR);
 	if (!fd)
@@ -171,26 +156,22 @@ int	is_matris(char *str, t_window *window)
 		//printf("FD hit\n");
 		return (0);
 	}
-		
 	row = 0;
 	iter = get_next_line(fd);
 	column = ft_strlen(iter);
 	i = 0;
-	while(iter)
+	while (iter)
 	{
 		row++;
 		if (ft_strlen(iter) != column)
 		{
 			//printf("%s\n", iter);
 			return (0);
-			
 		}
-			
 		free(iter);
 		iter = get_next_line(fd);
 		i++;
 	}
-
 	window->column = column - 1; //minus \n
 	window->row = row;
 	window->map = (char **)malloc(sizeof(char *) * i);
@@ -199,6 +180,3 @@ int	is_matris(char *str, t_window *window)
 	close(fd);
 	return (i);
 }
-
-
-
