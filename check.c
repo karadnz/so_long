@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:42:26 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 02:20:28 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/05 06:40:00 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,16 +94,16 @@ int is_valid_char(t_window *window)
 			
 			if (!is_pec(window->map[i][j]))
 			{
-				printf("$%c$",window->map[i][j]);
-				printf("$i:%d  j:%d, str:%s,$",i,j,window->map[i]);
+				//printf("$%c$",window->map[i][j]);
+				//printf("$i:%d  j:%d, str:%s,$",i,j,window->map[i]);
 				return (0);
 
 			}
 				
 			j++;
 		}
-		printf("%s",window->map[i]);
-		printf("\n");
+		//printf("%s",window->map[i]);
+		//printf("\n");
 		i++;
 	}
 	return (1);
@@ -124,7 +124,7 @@ void	init_matris(char *str, t_window *window)
 	while (iter) //**//**//**//**//**//**//**//**//**//
 	{
 		window->map[i] = get_row(iter);
-		printf("%s, %d\n",window->map[i], i);
+		//printf("%s, %d\n",window->map[i], i);
 		free(iter);
 		
 		iter = get_next_line(fd);
@@ -168,7 +168,7 @@ int	is_matris(char *str, t_window *window)
 	fd = open(str, O_RDWR);
 	if (!fd)
 	{
-		printf("FD hit\n");
+		//printf("FD hit\n");
 		return (0);
 	}
 		
@@ -181,7 +181,7 @@ int	is_matris(char *str, t_window *window)
 		row++;
 		if (ft_strlen(iter) != column)
 		{
-			printf("%s\n", iter);
+			//printf("%s\n", iter);
 			return (0);
 			
 		}

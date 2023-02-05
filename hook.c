@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 03:29:31 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 04:16:39 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/05 06:41:47 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	down_handle(t_window *window)
 					{
 						window->map[i + 1][j] = 'P';
 						window->map[i][j] = '0';
+						window->move_count++;
 						return ;
 
 					}
@@ -96,6 +97,7 @@ void	up_handle(t_window *window)
 					{
 						window->map[i - 1][j] = 'P';
 						window->map[i][j] = '0';
+						window->move_count++;
 						return ;
 
 					}
@@ -139,6 +141,7 @@ void	right_handle(t_window *window)
 					{
 						window->map[i][j + 1] = 'P';
 						window->map[i][j] = '0';
+						window->move_count++;
 						return ;
 
 					}
@@ -182,6 +185,7 @@ void	left_handle(t_window *window)
 					{
 						window->map[i][j - 1] = 'P';
 						window->map[i][j] = '0';
+						window->move_count++;
 						return ;
 
 					}
@@ -223,5 +227,7 @@ int	can_exit(t_window *window)
 		i++;
 	}
 
+	window->move_count++;
+	printf("Adim sayisi: %d\n", window->move_count);
 	return (1);
 }

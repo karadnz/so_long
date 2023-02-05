@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 04:16:01 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/05 06:35:34 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef struct s_window
 	int		row;
 	int		column;
 	char	**map;
+
+	int		move_count;
 
 }	t_window;
 

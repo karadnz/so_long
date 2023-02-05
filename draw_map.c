@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 01:37:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 04:05:52 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/05 06:41:29 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	draw_map(t_window *window , t_img *img)
 	draw_background(window, img);
 	draw_walls(window, img);
 	draw_pec(window, img);
+	printf("Adim sayisi: %d\n", window->move_count);
 }
 
 void	draw_background(t_window *window , t_img *img)
@@ -43,6 +44,7 @@ void	draw_background(t_window *window , t_img *img)
 		//printf("\n");
 		i++;
 	}
+	
 }
 
 void	draw_walls(t_window *window , t_img *img)
@@ -101,8 +103,8 @@ void	draw_pec(t_window *window , t_img *img)
 			
 			j++;
 		}
-		printf("%s",window->map[i]);
-		printf("\n");
+		//printf("%s",window->map[i]);
+		//printf("\n");
 		i++;
 	}
 }
