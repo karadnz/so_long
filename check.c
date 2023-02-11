@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:42:26 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/11 19:21:31 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/11 19:52:21 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	map_check(int ac, char **av, t_window *window)
 	printf("hit\n");
 	if (!is_walls_ok(window))
 		ft_err(3);
-	if (!is_counts_ok(window))
+	if (!is_counts_ok(window, window->map))
 		ft_err(4);
 	if	(!is_valid(window))
 		ft_err(5);
@@ -59,7 +59,7 @@ int	ft_err(int i)
 	exit(1);
 }
 
-int	is_counts_ok(t_window *window)
+int	is_counts_ok(t_window *window, char **map)
 {
 	int	i;
 	int	j;
@@ -77,24 +77,25 @@ int	is_counts_ok(t_window *window)
 		j = 0;
 		while (j < window->column)
 		{
-			if (window->map[i][j] == 'P')
+			if (map[i][j] == 'P')
 				pnum++;
-			if (window->map[i][j] == 'E')
+			if (map[i][j] == 'E')
 				exnum++;
-			if (window->map[i][j] == 'C')
+			if (map[i][j] == 'C')
 				cnum++;
 			j++;
 		}
 		i++;
 	}
 
-	if (pnum != 1 || exnum != 1 || cnum <= 0) //cnum dikkat
+	if (pnum != 1 || exnum != 1 || cnum <= 0)
 		return (0);
 	return (1);
 }
 int	is_valid(t_window	*window)
 {
 	char	**flooded;
+	int	rt;
 
 	flooded = get_copy(window);
 	printf("hit i: %d j: %d\n", window->row , window->column);
@@ -102,8 +103,9 @@ int	is_valid(t_window	*window)
 	ft_flood(window, flooded, get_p_xy(window, 'x'), get_p_xy(window, 'y')); //** bak
 	printmap(flooded, window->row, window->column);
 	
-	return (ft_is_left(window, flooded));
-
+	rt = ft_is_left(window, flooded);
+	freemap(flooded, window->row);
+	return (rt);
 }
 int	get_p_xy(t_window *window, char c)
 {
@@ -217,22 +219,15 @@ int	is_valid_char(t_window *window)
 	int	j;
 
 	i = 0;
-	j = 0;
 	while (i < window->row)
 	{
 		j = 0;
 		while (j < window->column)
 		{
 			if (!is_pec(window->map[i][j]))
-			{
-				//printf("$%c$",window->map[i][j]);
-				//printf("$i:%d  j:%d, str:%s,$",i,j,window->map[i]);
 				return (0);
-			}
 			j++;
 		}
-		//printf("%s",window->map[i]);
-		//printf("\n");
 		i++;
 	}
 	return (1);
@@ -282,41 +277,31 @@ int	is_ber(char *str)
 
 int	is_matris(char *str, t_window *window)
 {
-	int		column;
-	int		row;
 	int		fd;
 	char	*iter;
-	int		i;
 
 	fd = open(str, O_RDWR);
 	if (!fd)
-	{
-		//printf("FD hit\n");
 		return (0);
-	}
-	row = 0;
 	iter = get_next_line(fd);
-	column = ft_strlen(iter);
-	printf("iter = $%s$ col: %d, row: %d\n",iter, column, row);
-	i = 0;
+	window->row = 0;
+	window->column = ft_strlen(iter) - 1; //minus \n
+	//printf("iter = $%s$ col: %d, row: %d\n",iter, column, row);
 	while (iter)
 	{
-		row++;
-		if (ft_strlen(iter) != column)
+		window->row++;
+		if (ft_strlen(iter) != window->column + 1)
 		{
 			//printf("%s\n", iter);
 			return (0);
 		}
 		free(iter);
 		iter = get_next_line(fd);
-		i++;
 	}
-	window->column = column - 1; //minus \n
-	window->row = row;
-	window->map = (char **)malloc(sizeof(char *) * i);
-	window->window_width = (window->column) * IMG;
-	window->window_height = row * IMG;
-	printf("col: %d, row: %d\n", column, row);
-	close(fd);
-	return (i);
+	window->map = (char **)malloc(sizeof(char *) * window->row);
+	window->window_width = window->column * IMG;
+	window->window_height = window->row * IMG;
+	//printf("col: %d, row: %d\n", column, row);
+	close(fd); //??
+	return (window->row);
 }

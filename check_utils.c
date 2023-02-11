@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 23:24:35 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/11 18:26:55 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/11 19:49:44 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,17 @@ void	printmap(char **map, int row, int col)
 		printf("\n");
 		i++;
 	}
+}
+
+void	freemap(char **map, int row)
+{
+	int	i;
+
+	i = 0;
+	while (i < row)
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }

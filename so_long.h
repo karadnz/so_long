@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/11 19:20:15 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/11 19:49:13 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ft_flood(t_window	*window, char **map, int i, int j);
 char **get_copy(t_window *window);
 int	ft_is_left(t_window *window, char **map);
 int	get_p_xy(t_window *window, char c);
-int	is_counts_ok(t_window *window);
+int	is_counts_ok(t_window *window, char **map);
 
 
 //check utils
@@ -96,6 +96,7 @@ int	is_counts_ok(t_window *window);
 char	*get_row(char *str);
 int	is_pec(char c);
 void	printmap(char **map, int row, int col);
+void	freemap(char **map, int row);
 
 //draw map
 
