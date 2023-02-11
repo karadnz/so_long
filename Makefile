@@ -4,7 +4,7 @@ CC = gcc
 CFLAGS = -Wall
 FRMS = -framework OpenGL -framework AppKit
 
-SRCS = check.c check_utils.c draw_map.c hook.c init.c libftutils.c main.c
+SRCS = check.c check_utils.c check_utils2.c free_exit.c draw_map.c hook.c init.c libftutils.c main.c
 OBJS = $(SRCS:.c=.o)
 ARCS = gnl/get_next_line.a mlx/libmlx.a
 

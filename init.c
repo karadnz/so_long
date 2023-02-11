@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:54:21 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 07:34:31 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/11 20:41:55 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ void	init_window(t_window *window, t_img *img)
 	
 	window->mlx = mlx_init();
 	window->mlx_win = mlx_new_window(window->mlx, window->window_width, window->window_height, "Azmut");
-	window->relative_path = "assets/azmutjpg.xpm";
+	//window->relative_path = "assets/azmutjpg.xpm";
 	//window->img = mlx_xpm_file_to_image(window->mlx, window->relative_path, &window->img_width, &window->img_height);
 
 
-	window->bg = mlx_xpm_file_to_image(window->mlx, "assets/grass.xpm", &window->img_width, &window->img_height);
-	window->wall = mlx_xpm_file_to_image(window->mlx, "assets/wall.xpm", &window->img_width, &window->img_height);
+	//window->bg = mlx_xpm_file_to_image(window->mlx, "assets/grass.xpm", &window->img_width, &window->img_height);
+	//window->wall = mlx_xpm_file_to_image(window->mlx, "assets/wall.xpm", &window->img_width, &window->img_height);
 
 
 	img->bg = mlx_xpm_file_to_image(window->mlx, "assets/stone.xpm", &img->img_width, &img->img_height);

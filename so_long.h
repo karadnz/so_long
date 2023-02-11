@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/11 19:49:13 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/11 20:42:21 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ typedef struct s_window
 	void	*mlx_win;
 	t_img	*img;
 
-	void	*bg;
-	void	*wall;
+	//void	*relative_path;
+	//void	*bg;
+	//void 	*wall;
 	
-	char	*relative_path;
 
 	int		img_width; //
 	int		img_height; //
@@ -82,7 +82,6 @@ int	is_valid_char(t_window *window);
 int	is_walls_ok(t_window *window);
 void	init_matris(char *str, t_window *window);
 int	is_matris(char *str, t_window *window);
-int ft_err(int i);
 int	is_valid(t_window	*window);
 void	ft_flood(t_window	*window, char **map, int i, int j);
 char **get_copy(t_window *window);
@@ -96,6 +95,10 @@ int	is_counts_ok(t_window *window, char **map);
 char	*get_row(char *str);
 int	is_pec(char c);
 void	printmap(char **map, int row, int col);
+
+//free exit
+int	ft_err(int i, t_window *window);
+void	free_window(t_window *window);
 void	freemap(char **map, int row);
 
 //draw map

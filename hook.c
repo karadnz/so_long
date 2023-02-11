@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 03:29:31 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 07:21:41 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/11 20:04:56 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	key_handle(int keycode, t_window *window)
 	if (keycode == 13 || keycode == 126)
 		up_handle(window);
 	if (keycode == 53)
-		ft_err(-1);
+		ft_err(-1, window);
 	draw_map(window, window->img);
 	return (1);
 }
@@ -86,7 +86,7 @@ void	up_handle(t_window *window)
 					if (window->map[i - 1][j] == 'E')
 					{
 						if (can_exit(window))
-							exit(1);
+							exit(1); //*
 					}
 					if (window->map[i - 1][j] != '1' && window->map[i
 						- 1][j] != 'E')

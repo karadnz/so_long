@@ -6,69 +6,140 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 23:24:35 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/11 19:49:44 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/11 19:58:31 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*get_row(char *str)
+int	is_matris(char *str, t_window *window)
 {
-	int		i;
-	char	*rt;
-	int		len;
+	int		fd;
+	char	*iter;
 
-	printf("hit\n");
-	len = ft_strlen(str) - 1; //len of str without \n
-	rt = (char *)malloc(sizeof(char) * (len + 1));
-	i = 0;
-	//printf("hit %s, %d \n", str, len);
-	while (i < len)
+	fd = open(str, O_RDWR);
+	if (!fd)
+		return (0);
+	iter = get_next_line(fd);
+	window->row = 0;
+	window->column = ft_strlen(iter) - 1; //minus \n
+	//printf("iter = $%s$ col: %d, row: %d\n",iter, column, row);
+	while (iter)
 	{
-		rt[i] = str[i];
-		i++;
-		//printf("hit %d\n", i);
+		window->row++;
+		if (ft_strlen(iter) != window->column + 1)
+		{
+			//printf("%s\n", iter);
+			return (0);
+		}
+		free(iter);
+		iter = get_next_line(fd);
 	}
-	rt[i] = '\0';
-	//printf("hit %s %d\n", rt, i);
-	return (rt);
+	window->map = (char **)malloc(sizeof(char *) * window->row);
+	window->window_width = window->column * IMG;
+	window->window_height = window->row * IMG;
+	//printf("col: %d, row: %d\n", column, row);
+	close(fd); //??
+	return (window->row);
 }
 
-int	is_pec(char c)
+void	init_matris(char *str, t_window *window)
 {
-	if (c == '1' || c == '0' || c == 'P' || c == 'E' || c == 'C')
-		return (1);
-	return (0);
+	char	*iter;
+	int		fd;
+	int		i;
+
+	printf("hitINIT\n");
+	fd = open(str, O_RDWR);
+	if (!fd)
+		return ;
+	iter = get_next_line(fd);
+	i = 0;
+	while (iter) //**//**//**//**//**//**//**//**//**//
+	{
+		window->map[i] = get_row(iter);
+		//printf("%s, %d\n",window->map[i], i);
+		free(iter);
+		iter = get_next_line(fd);
+		i++;
+	}
+	close(fd);
 }
 
-void	printmap(char **map, int row, int col)
+int	is_valid_char(t_window *window)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < row)
+	while (i < window->row)
 	{
 		j = 0;
-		while (j < col)
+		while (j < window->column)
 		{
-			printf("%c",map[i][j]);
+			if (!is_pec(window->map[i][j]))
+				return (0);
 			j++;
 		}
-		printf("\n");
 		i++;
 	}
+	return (1);
 }
 
-void	freemap(char **map, int row)
+int	is_walls_ok(t_window *window)
 {
-	int	i;
+	int		i;
+	int		j;
+	char	**map;
 
 	i = 0;
-	while (i < row)
+	j = 0;
+	map = window->map;
+	while (j < window->column)
 	{
-		free(map[i]);
+		if (map[0][j] != '1' || map[window->row - 1][j] != '1')
+			return (0);
+		j++;
+	}
+	while (i < window->row)
+	{
+		if (map[i][0] != '1' || map[i][window->column - 1] != '1')
+			return (0);
 		i++;
 	}
-	free(map);
+	return (1);
+}
+
+int	is_counts_ok(t_window *window, char **map)
+{
+	int	i;
+	int	j;
+	int	pnum;
+	int	cnum;
+	int	exnum;
+
+	i = 0;
+	pnum = 0;
+	cnum = 0;
+	exnum = 0;
+
+	while (i < window->row)
+	{
+		j = 0;
+		while (j < window->column)
+		{
+			if (map[i][j] == 'P')
+				pnum++;
+			if (map[i][j] == 'E')
+				exnum++;
+			if (map[i][j] == 'C')
+				cnum++;
+			j++;
+		}
+		i++;
+	}
+
+	if (pnum != 1 || exnum != 1 || cnum <= 0)
+		return (0);
+	return (1);
 }
