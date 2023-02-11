@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 07:36:39 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/11 19:20:15 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,21 @@ int	is_ber(char *str);
 int	is_valid_char(t_window *window);
 int	is_walls_ok(t_window *window);
 void	init_matris(char *str, t_window *window);
-int	is_pec(char c);
 int	is_matris(char *str, t_window *window);
 int ft_err(int i);
+int	is_valid(t_window	*window);
+void	ft_flood(t_window	*window, char **map, int i, int j);
+char **get_copy(t_window *window);
+int	ft_is_left(t_window *window, char **map);
+int	get_p_xy(t_window *window, char c);
+int	is_counts_ok(t_window *window);
 
 
 //check utils
 
 char	*get_row(char *str);
+int	is_pec(char c);
+void	printmap(char **map, int row, int col);
 
 //draw map
 

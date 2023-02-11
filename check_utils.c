@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 23:24:35 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 06:55:49 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/11 18:26:55 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,23 @@ int	is_pec(char c)
 	if (c == '1' || c == '0' || c == 'P' || c == 'E' || c == 'C')
 		return (1);
 	return (0);
+}
+
+void	printmap(char **map, int row, int col)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < row)
+	{
+		j = 0;
+		while (j < col)
+		{
+			printf("%c",map[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
 }
