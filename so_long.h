@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/11 20:42:21 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/11 21:06:02 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ typedef struct s_window
 
 	int		move_count;
 
+	int		x;
+	int		y;
+
 }	t_window;
 
 
@@ -117,6 +120,7 @@ void	up_handle(t_window *window);
 void	right_handle(t_window *window);
 void	left_handle(t_window *window);
 int	can_exit(t_window *window);
+void	try_exit(t_window *window);
 
 
 

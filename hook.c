@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 03:29:31 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/11 20:04:56 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/11 21:19:06 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,142 @@ int	key_handle(int keycode, t_window *window)
 	draw_map(window, window->img);
 	return (1);
 }
+
+void	left_handle(t_window *window)
+{
+	int		x;
+	int		y;
+	char	**map;
+
+	window->img->look = 1;
+	map = window->map;
+	x = window->x;
+	y = window->y;
+	if (x + 1 < window->row)
+	{
+		if (map[x][y - 1] == 'E')
+			try_exit(window);
+		if (map[x][y - 1] != '1' && map[x][y - 1] != 'E')
+		{
+			map[x][y - 1] = 'P';
+			map[x][y] = '0';
+			window->move_count++;
+			window->y--;
+			return ;
+		}
+	}
+	return ;
+}
+
 void	down_handle(t_window *window)
+{
+	int		x;
+	int		y;
+	char	**map;
+
+	map = window->map;
+	x = window->x;
+	y = window->y;
+	if (x + 1 < window->row)
+	{
+		if (map[x + 1][y] == 'E')
+			try_exit(window);
+		if (map[x + 1][y] != '1' && map[x + 1][y] != 'E')
+		{
+			map[x + 1][y] = 'P';
+			map[x][y] = '0';
+			window->move_count++;
+			window->x++;
+			return ;
+		}
+	}
+	return ;
+}
+
+void	right_handle(t_window *window)
+{
+	int		x;
+	int		y;
+	char	**map;
+
+	window->img->look = 0;
+	map = window->map;
+	x = window->x;
+	y = window->y;
+	if (x + 1 < window->row)
+	{
+		if (map[x][y + 1] == 'E')
+			try_exit(window);
+		if (map[x][y + 1] != '1' && map[x][y + 1] != 'E')
+		{
+			map[x][y + 1] = 'P';
+			map[x][y] = '0';
+			window->move_count++;
+			window->y++;
+			return ;
+		}
+	}
+	return ;
+}
+
+void	up_handle(t_window *window)
+{
+	int		x;
+	int		y;
+	char	**map;
+
+	map = window->map;
+	x = window->x;
+	y = window->y;
+	if (x + 1 < window->row)
+	{
+		if (map[x - 1][y] == 'E')
+			try_exit(window);
+		if (map[x - 1][y] != '1' && map[x - 1][y] != 'E')
+		{
+			map[x - 1][y] = 'P';
+			map[x][y] = '0';
+			window->move_count++;
+			window->x--;
+			return ;
+		}
+	}
+	return ;
+}
+
+void	try_exit(t_window *window)
+{
+	if (can_exit(window))
+	{
+		window->move_count++;
+		draw_map(window, window->img);
+		free_window(window);
+		exit(1);
+	}
+}
+
+int	can_exit(t_window *window)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i < window->row)
+	{
+		j = 0;
+		while (j < window->column)
+		{
+			if (window->map[i][j] == 'C')
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+/*void	down_handle2(t_window *window)
 {
 	int	i;
 	int	j;
@@ -60,13 +195,11 @@ void	down_handle(t_window *window)
 			}
 			j++;
 		}
-		//printf("%s",window->map[i]);
-		//printf("\n");
 		i++;
 	}
 	printf("DOWN\n\n");
-}
-
+}*/
+/*
 void	up_handle(t_window *window)
 {
 	int	i;
@@ -100,8 +233,6 @@ void	up_handle(t_window *window)
 			}
 			j++;
 		}
-		//printf("%s",window->map[i]);
-		//printf("\n");
 		i++;
 	}
 	printf("UP\n\n");
@@ -141,8 +272,6 @@ void	right_handle(t_window *window)
 			}
 			j++;
 		}
-		//printf("%s",window->map[i]);
-		//printf("\n");
 		i++;
 	}
 	printf("RIGHT\n\n");
@@ -172,8 +301,7 @@ void	left_handle(t_window *window)
 							window->move_count++;
 							printf("Adim sayisi: %d\n", window->move_count);
 							exit(1);
-						}
-							
+						}	
 					}
 					else if (window->map[i][j - 1] != '1')
 					{
@@ -186,33 +314,8 @@ void	left_handle(t_window *window)
 			}
 			j++;
 		}
-		//printf("%s",window->map[i]);
-		//printf("\n");
 		i++;
 	}
 	printf("LEFT\n\n");
 }
-
-int	can_exit(t_window *window)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (i < window->row)
-	{
-		j = 0;
-		while (j < window->column)
-		{
-			if (window->map[i][j] == 'C')
-				return (0);
-			j++;
-		}
-		//printf("%s",window->map[i]);
-		//printf("\n");
-		i++;
-	}
-	
-	return (1);
-}
+*/

@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:03:43 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/11 20:37:21 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/11 21:20:53 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	free_window(t_window *window)
 	free(window->img->coin);
 	free(window->img->player_right);
 	free(window->img->player_left);
-	free(window->img->exit);
 	free(window->img->exit);
 	freemap(window->map, window->row);
 	free(window);
