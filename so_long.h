@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 13:25:52 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:59:19 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_img
 {
 	void	*bg;
 	void	*wall;
-	void	*coin;
+	
 	void	*pl_right;
 	void	*pl_left;
 	void	*exit;
@@ -38,6 +38,18 @@ typedef struct s_img
 	int		img_width;
 	int		img_height;
 	int		look;
+
+	/*void	*coin;
+	
+	void	*c0;
+	void	*c1;
+	void	*c2;
+	void	*c3;
+	void	*c4;
+	void	*c5;*/
+
+	void	**coin;
+	int		cindex;
 
 }	t_img;
 
@@ -76,6 +88,9 @@ static int	game_loop(t_window *a);
 long long	millitimestamp(void);
 void	init_window(t_window *window, t_img *img);
 
+//init
+void	init_window(t_window *window, t_img *img);
+void	init_coin(t_window *window, t_img *img, int *w, int *h); //free
 
 //checks
 

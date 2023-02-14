@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 03:29:31 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 13:31:56 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:45:13 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	key_handle(int keycode, t_window *window)
 		up_handle(window);
 	if (keycode == 53)
 		ft_err(-1, window);
-	draw_map(window, window->img);
+	//draw_map(window, window->img);
 	return (1);
 }
 

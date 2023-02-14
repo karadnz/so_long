@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 01:37:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 13:28:43 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:55:49 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	draw_pec(t_window *window, t_img *img)
 			}
 			else if (window->map[i][j] == 'C')
 			{
-				mlx_put_image_to_window(window->mlx, window->mlx_win, img->coin,
+				mlx_put_image_to_window(window->mlx, window->mlx_win, img->coin[img->cindex],
 						(j * IMG), (i * IMG));
 			}
 
