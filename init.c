@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:54:21 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 13:58:57 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/14 16:28:37 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ void	init_window(t_window *window, t_img *img)
 	img->bg = mlx_xpm_file_to_image(window->mlx, "assets/bg.xpm", w, h);
 	img->wall = mlx_xpm_file_to_image(window->mlx, "assets/w.xpm", w, h);
 	init_coin(window, img, w, h);
+	init_hbar(window, img, w, h);
 	// img->coin = mlx_xpm_file_to_image(window->mlx, "assets/c0.xpm", w, h);
 	img->pl_right = mlx_xpm_file_to_image(window->mlx, "assets/ct0.xpm", w, h);
 	img->pl_left = mlx_xpm_file_to_image(window->mlx, "assets/ct1.xpm", w, h);
 	img->exit = mlx_xpm_file_to_image(window->mlx, "assets/g0.xpm", w, h);
 	img->exit_open = mlx_xpm_file_to_image(window->mlx, "assets/g1.xpm", w, h);
+	img->hearth = mlx_xpm_file_to_image(window->mlx, "assets/h.xpm", w, h);
 	window->img = img;
 	img->look = 0;
 	window->move_count = 0;
@@ -49,4 +51,15 @@ void	init_coin(t_window *window, t_img *img, int *w, int *h)
 	img->coin[4] = mlx_xpm_file_to_image(window->mlx, "assets/c/c4.xpm", w, h);
 	img->coin[5] = mlx_xpm_file_to_image(window->mlx, "assets/c/c5.xpm", w, h);
 	img->cindex = 0;
+}
+
+
+void	init_hbar(t_window *window, t_img *img, int *w, int *h)
+{
+	img->hbar = (void **)malloc(sizeof(void *) * 4);
+	img->hbar[0] = mlx_xpm_file_to_image(window->mlx, "assets/h/hbar0.xpm", w, h);
+	img->hbar[1] = mlx_xpm_file_to_image(window->mlx, "assets/h/hbar1.xpm", w, h);
+	img->hbar[2] = mlx_xpm_file_to_image(window->mlx, "assets/h/hbar2.xpm", w, h);
+	img->hbar[3] = mlx_xpm_file_to_image(window->mlx, "assets/h/hbar3.xpm", w, h);
+	window->health = 3;
 }

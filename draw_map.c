@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 01:37:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 13:55:49 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/14 16:29:26 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	draw_map(t_window *window, t_img *img)
 {
 	draw_background(window, img);
 	draw_walls(window, img);
+	mlx_put_image_to_window(window->mlx, window->mlx_win, img->hbar[window->health], 10 , 10);
 	draw_pec(window, img);
+	mlx_string_put(window->mlx, window->mlx_win, 30, 30, 10, "AZMUT");
 	printf("Adim sayisi: %d\n", window->move_count);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 13:59:19 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/14 16:19:14 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ typedef struct s_img
 	void	*pl_left;
 	void	*exit;
 	void	*exit_open;
+	void	*hearth;
+	
+	void	**hbar;
 
 	int		img_width;
 	int		img_height;
@@ -78,6 +81,7 @@ typedef struct s_window
 
 	int		x;
 	int		y;
+	int		health;
 
 }	t_window;
 
@@ -91,6 +95,7 @@ void	init_window(t_window *window, t_img *img);
 //init
 void	init_window(t_window *window, t_img *img);
 void	init_coin(t_window *window, t_img *img, int *w, int *h); //free
+void	init_hbar(t_window *window, t_img *img, int *w, int *h);
 
 //checks
 
