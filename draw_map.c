@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 01:37:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 16:29:26 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/14 19:26:10 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,31 @@ void	draw_map(t_window *window, t_img *img)
 	draw_background(window, img);
 	draw_walls(window, img);
 	mlx_put_image_to_window(window->mlx, window->mlx_win, img->hbar[window->health], 10 , 10);
+	draw_nums(window, img);
 	draw_pec(window, img);
-	mlx_string_put(window->mlx, window->mlx_win, 30, 30, 10, "AZMUT");
+	//mlx_string_put(window->mlx, window->mlx_win, 30, 30, 10, "AZMUT");
 	printf("Adim sayisi: %d\n", window->move_count);
+}
+
+void	draw_nums(t_window *window, t_img *img)
+{
+	int	s;
+	int	c;
+
+	s = window->move_count;
+	c = window->ccount;
+	mlx_put_image_to_window(window->mlx, window->mlx_win,img->paw, (7.5 * 41), (IMG / 8));
+	mlx_put_image_to_window(window->mlx, window->mlx_win,img->nums[(s / 1000) % 10], (8.5 * 41), (IMG / 8));
+	mlx_put_image_to_window(window->mlx, window->mlx_win,img->nums[(s / 100) % 10], (9.5 * 41), (IMG / 8));
+	mlx_put_image_to_window(window->mlx, window->mlx_win,img->nums[(s / 10) % 10], (10.5 * 41), (IMG / 8));
+	mlx_put_image_to_window(window->mlx, window->mlx_win,img->nums[s % 10], (11.5 * 41), (IMG / 8));
+
+	mlx_put_image_to_window(window->mlx, window->mlx_win,img->cmini, (7.5 * 41), (IMG / 1.8));
+	mlx_put_image_to_window(window->mlx, window->mlx_win,img->nums[(c / 1000) % 10], (8.5 * 41), (IMG / 1.8));
+	mlx_put_image_to_window(window->mlx, window->mlx_win,img->nums[(c / 100) % 10], (9.5 * 41), (IMG / 1.8));
+	mlx_put_image_to_window(window->mlx, window->mlx_win,img->nums[(c / 10) % 10], (10.5 * 41), (IMG / 1.8));
+	mlx_put_image_to_window(window->mlx, window->mlx_win,img->nums[c % 10], (11.5 * 41), (IMG / 1.8));
+
 }
 
 void	draw_background(t_window *window, t_img *img)
@@ -78,11 +100,18 @@ void	draw_pec(t_window *window, t_img *img)
 
 	i = 0;
 	j = 0;
+	int n = 0;
 	while (i < window->row)
 	{
 		j = 0;
 		while (j < window->column)
 		{
+			// if (i == 0 && n < 10)
+			// {
+			// 	mlx_put_image_to_window(window->mlx, window->mlx_win,img->nums[n], (j * 41), (i * IMG));
+			// 	n++;
+			// }
+			
 			if (window->map[i][j] == 'P')
 			{
 				if(img->look == 0)
@@ -107,6 +136,11 @@ void	draw_pec(t_window *window, t_img *img)
 			else if (window->map[i][j] == 'C')
 			{
 				mlx_put_image_to_window(window->mlx, window->mlx_win, img->coin[img->cindex],
+						(j * IMG), (i * IMG));
+			}
+			else if (window->map[i][j] == 'X')
+			{
+				mlx_put_image_to_window(window->mlx, window->mlx_win, img->enemy[img->eindex],
 						(j * IMG), (i * IMG));
 			}
 

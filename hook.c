@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 03:29:31 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 13:45:13 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/14 18:31:17 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	left_handle(t_window *window)
 			try_exit(window);
 		if (map[x][y - 1] != '1' && map[x][y - 1] != 'E')
 		{
+			if (map[x][y - 1] == 'C')
+				window->ccount++;
 			map[x][y - 1] = 'P';
 			map[x][y] = '0';
 			window->move_count++;
@@ -69,6 +71,8 @@ void	down_handle(t_window *window)
 			try_exit(window);
 		if (map[x + 1][y] != '1' && map[x + 1][y] != 'E')
 		{
+			if (map[x + 1][y] == 'C')
+				window->ccount++;
 			map[x + 1][y] = 'P';
 			map[x][y] = '0';
 			window->move_count++;
@@ -95,6 +99,8 @@ void	right_handle(t_window *window)
 			try_exit(window);
 		if (map[x][y + 1] != '1' && map[x][y + 1] != 'E')
 		{
+			if (map[x][y + 1] == 'C')
+				window->ccount++;
 			map[x][y + 1] = 'P';
 			map[x][y] = '0';
 			window->move_count++;
@@ -120,6 +126,8 @@ void	up_handle(t_window *window)
 			try_exit(window);
 		if (map[x - 1][y] != '1' && map[x - 1][y] != 'E')
 		{
+			if (map[x - 1][y] == 'C')
+				window->ccount++;
 			map[x - 1][y] = 'P';
 			map[x][y] = '0';
 			window->move_count++;

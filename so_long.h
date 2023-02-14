@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 16:19:14 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/14 19:26:57 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,14 @@ typedef struct s_img
 	void	**coin;
 	int		cindex;
 
+	void	**enemy;
+	int		eindex;
+
+	void	*paw;
+	void	*cmini;
+
+	void	**nums;
+
 }	t_img;
 
 typedef struct s_window
@@ -78,6 +86,7 @@ typedef struct s_window
 	char	**map;
 
 	int		move_count;
+	int		ccount;
 
 	int		x;
 	int		y;
@@ -96,6 +105,9 @@ void	init_window(t_window *window, t_img *img);
 void	init_window(t_window *window, t_img *img);
 void	init_coin(t_window *window, t_img *img, int *w, int *h); //free
 void	init_hbar(t_window *window, t_img *img, int *w, int *h);
+void	init_nums(t_window *window, t_img *img, int *w, int *h);
+void	draw_nums(t_window *window, t_img *img);
+void	init_enemy(t_window *window, t_img *img, int *w, int *h);
 
 //checks
 
@@ -130,6 +142,7 @@ void	draw_background(t_window *window , t_img *img);
 void	draw_map(t_window *window , t_img *img);
 void	draw_walls(t_window *window , t_img *img);
 void	draw_pec(t_window *window , t_img *img);
+void	draw_nums(t_window *window, t_img *img);
 
 
 //handle

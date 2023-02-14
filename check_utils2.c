@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 19:55:01 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 13:36:05 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/14 19:28:43 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*get_row(char *str)
 
 int	is_pec(char c)
 {
-	if (c == '1' || c == '0' || c == 'P' || c == 'E' || c == 'C')
+	if (c == '1' || c == '0' || c == 'P' || c == 'E' || c == 'C' || c == 'X') //*** x bak
 		return (1);
 	return (0);
 }
