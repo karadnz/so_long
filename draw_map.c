@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 01:37:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/05 07:36:22 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:28:43 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ void	draw_pec(t_window *window, t_img *img)
 			if (window->map[i][j] == 'P')
 			{
 				if(img->look == 0)
-					mlx_put_image_to_window(window->mlx, window->mlx_win,img->player_right, (j * IMG), (i * IMG));
+					mlx_put_image_to_window(window->mlx, window->mlx_win,img->pl_right, (j * IMG), (i * IMG));
 				else
-					mlx_put_image_to_window(window->mlx, window->mlx_win,img->player_left, (j * IMG), (i * IMG));
+					mlx_put_image_to_window(window->mlx, window->mlx_win,img->pl_left, (j * IMG), (i * IMG));
 			}
 			else if (window->map[i][j] == 'E')
 			{

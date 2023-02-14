@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:03:43 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/11 21:20:53 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:33:30 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ int	ft_err(int i, t_window *window)
 	else if (i == 5)
 		write(1, "flood fail\n", 11);
 	else
-		write(1, "cikis!\n",7);
-	
+		write(1, "cikis!\n", 7);
 	exit(1);
 }
 
@@ -38,12 +37,12 @@ void	free_window(t_window *window)
 {
 	free(window->mlx);
 	free(window->mlx_win);
-	free(window->img); //**
+	free(window->img);
 	free(window->img->bg);
 	free(window->img->wall);
 	free(window->img->coin);
-	free(window->img->player_right);
-	free(window->img->player_left);
+	free(window->img->pl_right);
+	free(window->img->pl_left);
 	free(window->img->exit);
 	freemap(window->map, window->row);
 	free(window);

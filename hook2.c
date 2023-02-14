@@ -1,59 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_utils2.c                                     :+:      :+:    :+:   */
+/*   hook2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/11 19:55:01 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 13:36:05 by mkaraden         ###   ########.fr       */
+/*   Created: 2023/02/14 13:31:31 by mkaraden          #+#    #+#             */
+/*   Updated: 2023/02/14 13:32:12 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// len without \n
-char	*get_row(char *str)
+void	try_exit(t_window *window)
 {
-	int		i;
-	char	*rt;
-	int		len;
-
-	printf("hit\n");
-	len = ft_strlen(str) - 1;
-	rt = (char *)malloc(sizeof(char) * (len + 1));
-	i = 0;
-	while (i < len)
+	if (can_exit(window))
 	{
-		rt[i] = str[i];
-		i++;
+		window->move_count++;
+		draw_map(window, window->img);
+		free_window(window);
+		exit(1);
 	}
-	rt[i] = '\0';
-	return (rt);
 }
 
-int	is_pec(char c)
-{
-	if (c == '1' || c == '0' || c == 'P' || c == 'E' || c == 'C')
-		return (1);
-	return (0);
-}
-
-void	printmap(char **map, int row, int col)
+int	can_exit(t_window *window)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < row)
+	j = 0;
+	while (i < window->row)
 	{
 		j = 0;
-		while (j < col)
+		while (j < window->column)
 		{
-			printf("%c", map[i][j]);
+			if (window->map[i][j] == 'C')
+				return (0);
 			j++;
 		}
-		printf("\n");
 		i++;
 	}
+	return (1);
 }

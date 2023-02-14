@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/11 21:06:02 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:25:52 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ typedef struct s_img
 	void	*bg;
 	void	*wall;
 	void	*coin;
-	void	*player_right;
-	void	*player_left;
+	void	*pl_right;
+	void	*pl_left;
 	void	*exit;
 	void	*exit_open;
 
