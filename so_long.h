@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 19:26:57 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/15 16:11:44 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,17 @@
 # include <sys/time.h> //
 # include <fcntl.h> 
 # include <stdlib.h> //
+
+
+
+typedef struct s_enemy
+{
+	int	x;
+	int	y;
+	int	eindex;
+	int	elook;
+	
+}	t_enemy;
 
 
 typedef struct s_img
@@ -55,10 +66,14 @@ typedef struct s_img
 	int		cindex;
 
 	void	**enemy;
-	int		eindex;
+
+	t_enemy	**enemies;
+	
 
 	void	*paw;
 	void	*cmini;
+
+	void	**cat;
 
 	void	**nums;
 
@@ -87,6 +102,7 @@ typedef struct s_window
 
 	int		move_count;
 	int		ccount;
+	int		encount;
 
 	int		x;
 	int		y;
@@ -97,9 +113,20 @@ typedef struct s_window
 
 
 
+
+
 static int	game_loop(t_window *a);
 long long	millitimestamp(void);
 void	init_window(t_window *window, t_img *img);
+
+
+//enemy
+void	get_en_count(t_window *window);
+void	get_e_xy(t_window *window);
+void	enemy_move(t_window *window, t_img *img);
+void	update_eindex(t_window *window);
+
+void	draw_enemies(t_window *window, t_img *img); //draw
 
 //init
 void	init_window(t_window *window, t_img *img);
@@ -108,6 +135,7 @@ void	init_hbar(t_window *window, t_img *img, int *w, int *h);
 void	init_nums(t_window *window, t_img *img, int *w, int *h);
 void	draw_nums(t_window *window, t_img *img);
 void	init_enemy(t_window *window, t_img *img, int *w, int *h);
+void	init_player(t_window *window, t_img *img, int *w, int *h);
 
 //checks
 

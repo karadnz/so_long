@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 03:29:31 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 18:31:17 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:02:54 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,34 @@ int	key_handle(int keycode, t_window *window)
 		ft_err(-1, window);
 	//draw_map(window, window->img);
 	return (1);
+}
+
+void	right_handle(t_window *window)
+{
+	int		x;
+	int		y;
+	char	**map;
+
+	window->img->look = 0;
+	map = window->map;
+	x = window->x;
+	y = window->y;
+	if (x + 1 < window->row)
+	{
+		if (map[x][y + 1] == 'E')
+			try_exit(window);
+		if (map[x][y + 1] != '1' && map[x][y + 1] != 'E')
+		{
+			if (map[x][y + 1] == 'C')
+				window->ccount++;
+			map[x][y + 1] = 'P';
+			map[x][y] = '0';
+			window->move_count++;
+			window->y++;
+			return ;
+		}
+	}
+	return ;
 }
 
 void	left_handle(t_window *window)
@@ -62,6 +90,7 @@ void	down_handle(t_window *window)
 	int		y;
 	char	**map;
 
+	window->img->look = 2;
 	map = window->map;
 	x = window->x;
 	y = window->y;
@@ -83,40 +112,13 @@ void	down_handle(t_window *window)
 	return ;
 }
 
-void	right_handle(t_window *window)
-{
-	int		x;
-	int		y;
-	char	**map;
-
-	window->img->look = 0;
-	map = window->map;
-	x = window->x;
-	y = window->y;
-	if (x + 1 < window->row)
-	{
-		if (map[x][y + 1] == 'E')
-			try_exit(window);
-		if (map[x][y + 1] != '1' && map[x][y + 1] != 'E')
-		{
-			if (map[x][y + 1] == 'C')
-				window->ccount++;
-			map[x][y + 1] = 'P';
-			map[x][y] = '0';
-			window->move_count++;
-			window->y++;
-			return ;
-		}
-	}
-	return ;
-}
-
 void	up_handle(t_window *window)
 {
 	int		x;
 	int		y;
 	char	**map;
 
+	window->img->look = 3;
 	map = window->map;
 	x = window->x;
 	y = window->y;

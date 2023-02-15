@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:52:58 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 19:25:33 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/15 16:15:44 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,12 @@ static int	game_loop(t_window *window)
 	diff_millisecs = now - window->lm;
 	static int x = 0;
 	
-	if (diff_millisecs > 50)
+	if (diff_millisecs > 70)
 	{
-		window->img->eindex++;
+		update_eindex(window);
 		window->img->cindex++;
 		if (window->img->cindex == 6)
 			window->img->cindex = 0;
-		if (window->img->eindex == 9)
-			window->img->eindex = 0;
 		window->lm = now;
 	}
 	draw_map(window, window->img);

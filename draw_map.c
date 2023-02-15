@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 01:37:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 19:26:10 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/15 16:20:35 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	draw_map(t_window *window, t_img *img)
 	mlx_put_image_to_window(window->mlx, window->mlx_win, img->hbar[window->health], 10 , 10);
 	draw_nums(window, img);
 	draw_pec(window, img);
+	draw_enemies(window, img);
 	//mlx_string_put(window->mlx, window->mlx_win, 30, 30, 10, "AZMUT");
 	printf("Adim sayisi: %d\n", window->move_count);
 }
@@ -115,9 +116,9 @@ void	draw_pec(t_window *window, t_img *img)
 			if (window->map[i][j] == 'P')
 			{
 				if(img->look == 0)
-					mlx_put_image_to_window(window->mlx, window->mlx_win,img->pl_right, (j * IMG), (i * IMG));
+					mlx_put_image_to_window(window->mlx, window->mlx_win, img->cat[img->look], (j * IMG), (i * IMG));
 				else
-					mlx_put_image_to_window(window->mlx, window->mlx_win,img->pl_left, (j * IMG), (i * IMG));
+					mlx_put_image_to_window(window->mlx, window->mlx_win, img->cat[img->look], (j * IMG), (i * IMG));
 			}
 			else if (window->map[i][j] == 'E')
 			{
@@ -138,16 +139,40 @@ void	draw_pec(t_window *window, t_img *img)
 				mlx_put_image_to_window(window->mlx, window->mlx_win, img->coin[img->cindex],
 						(j * IMG), (i * IMG));
 			}
-			else if (window->map[i][j] == 'X')
+			/*else if (window->map[i][j] == 'X')
 			{
-				mlx_put_image_to_window(window->mlx, window->mlx_win, img->enemy[img->eindex],
+				mlx_put_image_to_window(window->mlx, window->mlx_win, img->enemy[img->eindex + img->elook],
 						(j * IMG), (i * IMG));
-			}
+			}*/
 
 			j++;
 		}
 		//printf("%s",window->map[i]);
 		//printf("\n");
+		i++;
+	}
+}
+
+void	draw_enemies(t_window *window, t_img *img)
+{
+	
+
+	int	i;
+	int	x;
+	int	y;
+	t_enemy *enemy;
+	char	**map;
+
+	i = 0;
+	map = window->map;
+	while(i < window->encount)
+	{
+		enemy = img->enemies[i];
+		x = enemy->x;
+		y = enemy->y;
+
+		mlx_put_image_to_window(window->mlx, window->mlx_win, img->enemy[enemy->eindex + enemy->elook], (y * IMG), (x * IMG));
+		//mlx_put_image_to_window(window->mlx, window->mlx_win, img->coin[1], (y * IMG), (x * IMG));
 		i++;
 	}
 }
