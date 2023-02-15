@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:54:21 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/15 16:14:41 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:25:09 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	init_window(t_window *window, t_img *img)
 	img->look = 0;
 	window->move_count = 0;
 	window->ccount = 0;
+	window->lm = 0; //
+	window->dt = 0; //
 	window->x = get_p_xy(window, 'x');
 	window->y = get_p_xy(window, 'y');
 
@@ -121,6 +123,7 @@ void	init_enemy(t_window *window, t_img *img, int *w, int *h)
 	img->enemy[21] = mlx_xpm_file_to_image(window->mlx, "assets/e/el10.xpm", w, h);
 
 	printf("%d\n",window->encount);
+	img->eindex = 0;
 	img->enemies = (t_enemy **)malloc(sizeof(t_enemy *) * window->encount);
 	int	i;
 	i = 0;

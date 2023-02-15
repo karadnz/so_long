@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:23:36 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/15 16:21:08 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:33:36 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	enemy_move(t_window *window, t_img *img)
 
 		if (enemy->elook == 0)
 		{
-			if (map[x][y + 1] != '0')
+			if (map[x][y + 1] != '0' && map[x][y + 1] != 'P')
 			{
 				enemy->elook = 11;
 			}
@@ -98,9 +98,9 @@ void	enemy_move(t_window *window, t_img *img)
 
 		}
 
-		if (enemy->elook == 11)
+		else if (enemy->elook == 11)
 		{
-			if (map[x][y - 1] != '0')
+			if (map[x][y - 1] != '0' && map[x][y - 1] != 'P')
 			{
 				enemy->elook = 0;
 			}
@@ -114,8 +114,11 @@ void	enemy_move(t_window *window, t_img *img)
 		}
 
 		i++;
-
+		
+	
 	}
+	
+	
 }
 
 void	update_eindex(t_window *window)
@@ -130,7 +133,6 @@ void	update_eindex(t_window *window)
 		window->img->enemies[i]->eindex++;
 		if (window->img->enemies[i]->eindex == 10)
 		{
-			enemy_move(window, window->img);
 			window->img->enemies[i]->eindex = 0;
 		}
 		i++;

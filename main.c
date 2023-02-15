@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:52:58 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/15 16:15:44 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:27:29 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,65 @@ static int	game_loop(t_window *window)
 {
 	long long	now;
 	long long	diff_millisecs;
+	long long	diff_death;
 
 	now = millitimestamp();
 	diff_millisecs = now - window->lm;
+	diff_death = now - window->dt;
 	static int x = 0;
 	
 	if (diff_millisecs > 70)
 	{
-		update_eindex(window);
+		window->lm = now;
+		//update_eindex(window);
 		window->img->cindex++;
+		window->img->eindex++;
 		if (window->img->cindex == 6)
 			window->img->cindex = 0;
-		window->lm = now;
+		if (window->img->eindex == 10)
+		{
+			enemy_move(window, window->img);
+			window->img->eindex = 0;
+		}
+			
+		draw_map(window, window->img);
+		if(is_dead(window, window->img) && diff_death > 2500)
+		{
+			window->health--;
+			if (window->health == 0)
+			{
+				ft_err(-1, window);
+			}
+			window->dt = now;
+		}
+		
 	}
-	draw_map(window, window->img);
+	
 	return (1);
+}
+
+int	is_dead(t_window *window, t_img *img)
+{
+	int	i;
+	int	x;
+	int	y;
+	int	px;
+	int	py;
+	t_enemy *enemy;
+
+	i = 0;
+	px = window->x;
+	py = window->y;
+	while(i < window->encount)
+	{
+		enemy = img->enemies[i];
+		x = enemy->x;
+		y = enemy->y;
+		if(x == px && y == py)
+			return(1);
+		i++;
+	}
+	return (0);
 }
 
 long long	millitimestamp(void)

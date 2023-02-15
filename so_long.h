@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/15 16:11:44 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:18:08 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ typedef struct s_img
 	void	**enemy;
 
 	t_enemy	**enemies;
+
+	int		eindex;
 	
 
 	void	*paw;
@@ -93,6 +95,7 @@ typedef struct s_window
 	int		img_width; //
 	int		img_height; //
 	long long lm; //time
+	long long dt;
 
 	int		window_width;
 	int		window_height;
@@ -118,6 +121,7 @@ typedef struct s_window
 static int	game_loop(t_window *a);
 long long	millitimestamp(void);
 void	init_window(t_window *window, t_img *img);
+int	is_dead(t_window *window, t_img *img);
 
 
 //enemy

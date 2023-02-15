@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 01:37:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/15 16:20:35 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:31:43 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,14 +113,14 @@ void	draw_pec(t_window *window, t_img *img)
 			// 	n++;
 			// }
 			
-			if (window->map[i][j] == 'P')
+			/*if (window->map[i][j] == 'P')
 			{
 				if(img->look == 0)
 					mlx_put_image_to_window(window->mlx, window->mlx_win, img->cat[img->look], (j * IMG), (i * IMG));
 				else
 					mlx_put_image_to_window(window->mlx, window->mlx_win, img->cat[img->look], (j * IMG), (i * IMG));
-			}
-			else if (window->map[i][j] == 'E')
+			}*/
+			if (window->map[i][j] == 'E')
 			{
 				if (can_exit(window))
 				{
@@ -165,14 +165,14 @@ void	draw_enemies(t_window *window, t_img *img)
 
 	i = 0;
 	map = window->map;
+	mlx_put_image_to_window(window->mlx, window->mlx_win, img->cat[img->look], (window->y * IMG), (window->x * IMG));
 	while(i < window->encount)
 	{
 		enemy = img->enemies[i];
 		x = enemy->x;
 		y = enemy->y;
 
-		mlx_put_image_to_window(window->mlx, window->mlx_win, img->enemy[enemy->eindex + enemy->elook], (y * IMG), (x * IMG));
-		//mlx_put_image_to_window(window->mlx, window->mlx_win, img->coin[1], (y * IMG), (x * IMG));
+		mlx_put_image_to_window(window->mlx, window->mlx_win, img->enemy[img->eindex + enemy->elook], (y * IMG), (x * IMG));
 		i++;
 	}
 }
