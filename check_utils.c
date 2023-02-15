@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 23:24:35 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/11 19:58:31 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:59:55 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ int	is_matris(char *str, t_window *window)
 	iter = get_next_line(fd);
 	window->row = 0;
 	window->column = ft_strlen(iter) - 1; //minus \n
-	//printf("iter = $%s$ col: %d, row: %d\n",iter, column, row);
+	printf("iter = $%s$ col: %d, row: %d\n",iter, window->column, window->row);
 	while (iter)
 	{
 		window->row++;
+		printf("%s, %d\n", iter,ft_strlen(iter));
 		if (ft_strlen(iter) != window->column + 1)
 		{
-			//printf("%s\n", iter);
+			
 			return (0);
 		}
 		free(iter);
@@ -38,7 +39,7 @@ int	is_matris(char *str, t_window *window)
 	window->map = (char **)malloc(sizeof(char *) * window->row);
 	window->window_width = window->column * IMG;
 	window->window_height = window->row * IMG;
-	//printf("col: %d, row: %d\n", column, row);
+	printf(" col: %d, row: %d\n", window->column, window->row);
 	close(fd); //??
 	return (window->row);
 }
