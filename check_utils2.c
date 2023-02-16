@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 19:55:01 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/16 14:34:46 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:21:31 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ char	*get_row(char *str)
 	char	*rt;
 	int		len;
 
-	printf("hit\n");
 	len = ft_strlen(str) - 1;
 	rt = (char *)malloc(sizeof(char) * (len + 1));
 	i = 0;
@@ -34,7 +33,9 @@ char	*get_row(char *str)
 
 int	is_pec(char c)
 {
-	if (c == '1' || c == '0' || c == 'P' || c == 'E' || c == 'C' || c == 'X') //*** x bak
+	if (c == '1' || c == '0' || c == 'P')
+		return (1);
+	if (c == 'E' || c == 'C' || c == 'X')
 		return (1);
 	return (0);
 }
@@ -57,7 +58,6 @@ void	printmap(char **map, int row, int col)
 		i++;
 	}
 }
-
 
 int	is_ber(char *str)
 {

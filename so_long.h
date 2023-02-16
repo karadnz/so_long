@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/16 14:38:18 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:34:36 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,8 @@ void	get_e_xy(t_window *window);
 void	enemy_move(t_window *window, t_img *img);
 void	update_eindex(t_window *window);
 
+void	enemy_move_dir(t_window *window, t_enemy *enemy, int x, int y);
+
 void	draw_enemies(t_window *window, t_img *img); //draw
 
 //init
@@ -144,6 +146,9 @@ void	init_nums(t_window *window, t_img *img, int *w, int *h);
 void	draw_nums(t_window *window, t_img *img);
 void	init_enemy(t_window *window, t_img *img, int *w, int *h);
 void	init_player(t_window *window, t_img *img, int *w, int *h);
+void	init_wnums(t_window *window, t_img *img);
+
+void	init_enemy_left(t_window *window, t_img *img, int *w, int *h);
 
 //checks
 

@@ -2,9 +2,9 @@ NAME = so_long
 
 CC = gcc
 CFLAGS = -Wall
-FRMS = -framework OpenGL -framework AppKit
+FRMS = -framework OpenGL -framework AppKit 
 
-SRCS = check.c enemy.c check_utils.c check_utils2.c free_exit.c draw_map.c hook.c hook2.c init.c libftutils.c main.c
+SRCS = check.c enemy.c enemy2.c init2.c check_utils.c check_utils2.c free_exit.c draw_map.c hook.c hook2.c init.c libftutils.c main.c
 OBJS = $(SRCS:.c=.o)
 ARCS = gnl/get_next_line.a mlx/libmlx.a
 
