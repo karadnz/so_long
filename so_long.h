@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/16 16:34:36 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/16 18:47:53 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,8 @@ static int	game_loop(t_window *a);
 long long	millitimestamp(void);
 void	init_window(t_window *window, t_img *img);
 int	is_dead(t_window *window, t_img *img);
+
+void	free_arr(void **arr, int size);
 
 
 //enemy

@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:31:31 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 13:32:12 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/16 19:13:16 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	try_exit(t_window *window)
 		window->move_count++;
 		draw_map(window, window->img);
 		free_window(window);
-		exit(1);
+		ft_err(7, window);
+		//exit(1);
 	}
 }
 

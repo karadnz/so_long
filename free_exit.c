@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:03:43 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 13:33:30 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/16 19:30:11 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,13 @@ int	ft_err(int i, t_window *window)
 		write(1, "invalid number of p,e,c!\n", 29);
 	else if (i == 5)
 		write(1, "flood fail\n", 11);
+	else if (i == 6)
+		write(1, "you died\n", 10);
+	else if (i == 7)
+		write(1, "you won\n", 8);
 	else
 		write(1, "cikis!\n", 7);
+	system("leaks so_long");
 	exit(1);
 }
 
@@ -37,14 +42,17 @@ void	free_window(t_window *window)
 {
 	free(window->mlx);
 	free(window->mlx_win);
-	free(window->img);
 	free(window->img->bg);
 	free(window->img->wall);
-	free(window->img->coin);
-	free(window->img->pl_right);
-	free(window->img->pl_left);
 	free(window->img->exit);
+	free(window->img->exit_open);
 	freemap(window->map, window->row);
+	free_arr(window->img->hbar, 4);
+	free_arr(window->img->coin, 6);
+	free_arr(window->img->enemy, 22); // enemies
+	free_arr(window->img->enemies, window->encount);
+	free_arr(window->img->cat, 4);
+	free(window->img);
 	free(window);
 }
 
@@ -59,4 +67,17 @@ void	freemap(char **map, int row)
 		i++;
 	}
 	free(map);
+}
+
+void	free_arr(void **arr, int size)
+{
+	int	i;
+
+	i = 0;
+	while(i < size)
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
 }
