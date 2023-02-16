@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 16:07:05 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/16 17:10:30 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:35:43 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	init_enemy_left(t_window *window, t_img *img, int *w, int *h)
 	while (i < window->encount)
 	{
 		img->enemies[i] = (t_enemy *)malloc(sizeof(t_enemy));
-		//img->enemies[i]->elook = 0;
+		img->enemies[i]->elook = 0;
 		i++;
 	}
 	get_e_xy(window);

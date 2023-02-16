@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:23:36 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/16 16:32:04 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:36:00 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,4 +129,3 @@ void	update_eindex(t_window *window)
 		i++;
 	}
 }
-
