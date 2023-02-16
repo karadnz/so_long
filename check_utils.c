@@ -6,12 +6,16 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 23:24:35 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/15 18:59:55 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/16 14:39:30 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+//minus \n
+//close fd bak
+//printf("iter = $%s$ col: %d, row: %d\n", iter, window->column, window->row);
+//printf("%s, %d\n", iter, ft_strlen(iter));
 int	is_matris(char *str, t_window *window)
 {
 	int		fd;
@@ -22,17 +26,12 @@ int	is_matris(char *str, t_window *window)
 		return (0);
 	iter = get_next_line(fd);
 	window->row = 0;
-	window->column = ft_strlen(iter) - 1; //minus \n
-	printf("iter = $%s$ col: %d, row: %d\n",iter, window->column, window->row);
+	window->column = ft_strlen(iter) - 1;
 	while (iter)
 	{
 		window->row++;
-		printf("%s, %d\n", iter,ft_strlen(iter));
 		if (ft_strlen(iter) != window->column + 1)
-		{
-			
 			return (0);
-		}
 		free(iter);
 		iter = get_next_line(fd);
 	}
@@ -40,10 +39,12 @@ int	is_matris(char *str, t_window *window)
 	window->window_width = window->column * IMG;
 	window->window_height = window->row * IMG;
 	printf(" col: %d, row: %d\n", window->column, window->row);
-	close(fd); //??
+	close(fd);
 	return (window->row);
 }
 
+//**//**//**//**//**//**//**//**//**//
+//printf("%s, %d\n",window->map[i], i);
 void	init_matris(char *str, t_window *window)
 {
 	char	*iter;
@@ -56,10 +57,9 @@ void	init_matris(char *str, t_window *window)
 		return ;
 	iter = get_next_line(fd);
 	i = 0;
-	while (iter) //**//**//**//**//**//**//**//**//**//
+	while (iter)
 	{
 		window->map[i] = get_row(iter);
-		//printf("%s, %d\n",window->map[i], i);
 		free(iter);
 		iter = get_next_line(fd);
 		i++;
@@ -115,32 +115,27 @@ int	is_counts_ok(t_window *window, char **map)
 {
 	int	i;
 	int	j;
-	int	pnum;
-	int	cnum;
-	int	exnum;
 
 	i = 0;
-	pnum = 0;
-	cnum = 0;
-	exnum = 0;
-
+	window->pnum = 0;
+	window->cnum = 0;
+	window->exnum = 0;
 	while (i < window->row)
 	{
 		j = 0;
 		while (j < window->column)
 		{
 			if (map[i][j] == 'P')
-				pnum++;
+				window->pnum++;
 			if (map[i][j] == 'E')
-				exnum++;
+				window->exnum++;
 			if (map[i][j] == 'C')
-				cnum++;
+				window->cnum++;
 			j++;
 		}
 		i++;
 	}
-
-	if (pnum != 1 || exnum != 1 || cnum <= 0)
+	if (window->pnum != 1 || window->exnum != 1 || window->cnum <= 0)
 		return (0);
 	return (1);
 }

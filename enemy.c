@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 15:23:36 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/15 18:33:36 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/16 14:50:19 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,7 @@ void	enemy_move(t_window *window, t_img *img)
 		
 	
 	}
-	
-	
+	window->img->eindex = 0;
 }
 
 void	update_eindex(t_window *window)
@@ -135,6 +134,29 @@ void	update_eindex(t_window *window)
 		{
 			window->img->enemies[i]->eindex = 0;
 		}
+		i++;
+	}
+}
+
+void	draw_enemies(t_window *window, t_img *img)
+{
+	int		i;
+	int		x;
+	int		y;
+	t_enemy	*enemy;
+	char	**map;
+
+	i = 0;
+	map = window->map;
+	mlx_put_image_to_window(window->mlx, window->mlx_win, img->cat[img->look],
+		(window->y * IMG), (window->x * IMG));
+	while (i < window->encount)
+	{
+		enemy = img->enemies[i];
+		x = enemy->x;
+		y = enemy->y;
+		mlx_put_image_to_window(window->mlx, window->mlx_win,
+			img->enemy[img->eindex + enemy->elook], (y * IMG), (x * IMG));
 		i++;
 	}
 }

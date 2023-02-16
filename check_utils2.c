@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 19:55:01 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/14 19:28:43 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/16 14:34:46 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,50 @@ void	printmap(char **map, int row, int col)
 		printf("\n");
 		i++;
 	}
+}
+
+
+int	is_ber(char *str)
+{
+	int	len;
+	int	fd;
+
+	fd = open(str, O_RDWR);
+	if (!fd)
+		return (0);
+	len = ft_strlen(str);
+	len--;
+	if (str[len - 2] == 'b' && str[len - 1] == 'e' && str[len] == 'r')
+	{
+		if (str[len - 3] == '.' && str[len - 4] != '\0')
+			return (1);
+	}
+	close(fd);
+	return (0);
+}
+
+int	get_p_xy(t_window *window, char c)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i < window->row)
+	{
+		j = 0;
+		while (j < window->column)
+		{
+			if (window->map[i][j] == 'P')
+			{
+				if (c == 'x')
+					return (i);
+				if (c == 'y')
+					return (j);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (-1);
 }

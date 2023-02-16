@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/15 18:18:08 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/16 14:38:18 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ typedef struct s_window
 
 	int		img_width; //
 	int		img_height; //
-	long long lm; //time
+	long long ft; //time
 	long long dt;
 
 	int		window_width;
@@ -110,6 +110,10 @@ typedef struct s_window
 	int		x;
 	int		y;
 	int		health;
+
+	int	pnum;
+	int	cnum;
+	int	exnum;
 
 }	t_window;
 
