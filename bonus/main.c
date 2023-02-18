@@ -6,13 +6,12 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:52:58 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/18 17:57:30 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:56:14 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-//mlx_loop_hook(window->mlx, game_loop, window);
 int	main(int ac, char **av)
 {
 	t_window	*window;
@@ -25,14 +24,14 @@ int	main(int ac, char **av)
 	draw_map(window, img);
 	mlx_hook(window->mlx_win, 2, 0, key_handle, window);
 	mlx_hook(window->mlx_win, 17, 0, ft_err, window);
+	mlx_loop_hook(window->mlx, game_loop, window);
 	mlx_loop(window->mlx);
 	return (0);
 }
 
-/*static int	game_loop(t_window *window)
+int	game_loop(t_window *window)
 {
 	long long	now;
-	long long	diff_death;
 
 	now = millitimestamp();
 	if (now - window->ft > 70)
@@ -54,7 +53,7 @@ int	main(int ac, char **av)
 		}
 	}
 	return (1);
-}*/
+}
 
 int	is_dead(t_window *window, t_img *img)
 {

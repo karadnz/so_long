@@ -6,11 +6,11 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 23:24:35 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/18 17:29:39 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:54:13 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 //minus \n
 //close fd bak
@@ -31,7 +31,7 @@ int	is_matris(char *str, t_window *window)
 	while (iter)
 	{
 		window->row++;
-		if ((int)ft_strlen(iter) != window->column + 1)
+		if (ft_strlen(iter) != (size_t)window->column + 1)
 			return (0);
 		free(iter);
 		iter = get_next_line(fd);

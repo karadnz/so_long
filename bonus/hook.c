@@ -6,11 +6,11 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 03:29:31 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/18 17:28:02 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:23:49 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	key_handle(int keycode, t_window *window)
 {
@@ -24,7 +24,6 @@ int	key_handle(int keycode, t_window *window)
 		up_handle(window);
 	if (keycode == 53)
 		ft_err(6, window);
-	draw_map(window, window->img);
 	return (1);
 }
 

@@ -1,0 +1,60 @@
+NAME	=	so_long
+BNAME	=	so_long_bonus
+
+PRINTF_PATH	= ./ft_printf/
+PRINTF	=	$(PRINTF_PATH)libftprintf.a
+
+GNL_C	=	./get/get_next_line.c
+GNL_U	=	./get/get_next_line_utils.c
+
+MLX_PATH	=	./mlx/
+MLX	=	$(MLX_PATH)libmlx.a
+CC	= gcc
+FLAGS = -Wall -Wextra -Werror -Lmlx -lmlx -framework OpenGL -framework AppKit
+
+CFILES	=	./so_long.c\
+			./check.c\
+			./hook.c\
+			./path.c\
+			./put_image.c\
+			./uniq.c\
+			./console_text.c
+
+BCFILES	=	./bonus/so_long_bonus.c\
+			./bonus/check_bonus.c\
+			./bonus/hook_bonus.c\
+			./bonus/path_bonus.c\
+			./bonus/put_image_bonus.c\
+			./bonus/uniq_bonus.c\
+			./bonus/console_text_bonus.c
+
+OBJECTS	=	$(CFILES:.c=.o)
+BOBJECTS	=	$(BCFILES:.c=.o)
+
+all : system $(NAME)
+
+bonus :system $(BNAME)
+
+system :
+	make -C $(PRINTF_PATH)
+	make -C $(MLX_PATH)
+
+$(NAME) : $(OBJECTS)
+	$(CC) $(FLAGS) $(GNL_C) $(GNL_U) $(PRINTF) $(MLX) $(OBJECTS) -o $(NAME)
+
+$(BNAME) : $(BOBJECTS)
+	$(CC) $(FLAGS) $(GNL_C) $(GNL_U) $(PRINTF) $(MLX) $(BOBJECTS) -o $(NAME)
+
+clean :
+	rm -f $(OBJECTS)
+	rm -f $(BOBJECTS)
+	make -C $(PRINTF_PATH) clean
+	make -C $(MLX_PATH) clean
+
+fclean : clean
+	rm -f $(NAME)
+	make -C $(PRINTF_PATH) fclean
+
+re : fclean all
+
+.PHONY:all clean fclean re bonus

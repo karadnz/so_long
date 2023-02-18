@@ -6,11 +6,11 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 19:55:01 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/18 17:28:25 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:23:33 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 // len without \n
 char	*get_row(char *str)
@@ -35,7 +35,7 @@ int	is_pec(char c)
 {
 	if (c == '1' || c == '0' || c == 'P')
 		return (1);
-	if (c == 'E' || c == 'C')
+	if (c == 'E' || c == 'C' || c == 'X')
 		return (1);
 	return (0);
 }
