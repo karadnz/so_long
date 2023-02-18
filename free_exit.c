@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:03:43 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/16 19:30:11 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 16:07:43 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,29 @@ int	ft_err(int i, t_window *window)
 	exit(1);
 }
 
+//free(window->mlx->font);
+	//free(window->mlx); //******
+	//free(window->mlx_win);
+	
+	//free(window);
 void	free_window(t_window *window)
 {
-	free(window->mlx);
-	free(window->mlx_win);
-	free(window->img->bg);
-	free(window->img->wall);
-	free(window->img->exit);
-	free(window->img->exit_open);
-	freemap(window->map, window->row);
-	free_arr(window->img->hbar, 4);
-	free_arr(window->img->coin, 6);
-	free_arr(window->img->enemy, 22); // enemies
-	free_arr(window->img->enemies, window->encount);
-	free_arr(window->img->cat, 4);
+	mlx_destroy_image(window->mlx, window->img->bg);
+	mlx_destroy_image(window->mlx, window->img->wall);
+	mlx_destroy_image(window->mlx, window->img->exit);
+	mlx_destroy_image(window->mlx, window->img->exit_open);
+	mlx_destroy_image(window->mlx, window->img->hearth);
+	mlx_destroy_image(window->mlx, window->img->paw);
+	mlx_destroy_image(window->mlx, window->img->cmini);
+	free_img_arr(window, window->img->hbar, 4);
+	free_img_arr(window, window->img->coin, 6);
+	free_img_arr(window, window->img->cat, 4);
+	free_img_arr(window, window->img->nums, 10);
+	free_img_arr(window, window->img->enemy, 22);
+	free_arr((void **)window->img->enemies, window->encount);
 	free(window->img);
-	free(window);
+	free_arr(window->map, window->row);
+	mlx_destroy_window(window->mlx, window->mlx_win);
 }
 
 void	freemap(char **map, int row)
@@ -69,13 +76,28 @@ void	freemap(char **map, int row)
 	free(map);
 }
 
+void	free_img_arr(t_window	*window, void **arr, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		printf("AA\n\n\n");
+		mlx_destroy_image(window->mlx, arr[i]);
+		i++;
+	}
+	free(arr);
+}
+
 void	free_arr(void **arr, int size)
 {
 	int	i;
 
 	i = 0;
-	while(i < size)
+	while (i < size)
 	{
+		printf("AA\n\n\n");
 		free(arr[i]);
 		i++;
 	}

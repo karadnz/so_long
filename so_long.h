@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/16 18:47:53 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 15:43:00 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,45 +40,24 @@ typedef struct s_img
 {
 	void	*bg;
 	void	*wall;
-	
-	void	*pl_right;
-	void	*pl_left;
 	void	*exit;
 	void	*exit_open;
 	void	*hearth;
+	void	*paw;
+	void	*cmini;
 	
 	void	**hbar;
+	void	**coin;
+	void	**cat;
+	void	**nums;
+	void	**enemy;
+	t_enemy	**enemies;
 
 	int		img_width;
 	int		img_height;
 	int		look;
-
-	/*void	*coin;
-	
-	void	*c0;
-	void	*c1;
-	void	*c2;
-	void	*c3;
-	void	*c4;
-	void	*c5;*/
-
-	void	**coin;
 	int		cindex;
-
-	void	**enemy;
-
-	t_enemy	**enemies;
-
 	int		eindex;
-	
-
-	void	*paw;
-	void	*cmini;
-
-	void	**cat;
-
-	void	**nums;
-
 }	t_img;
 
 typedef struct s_window
@@ -178,6 +157,7 @@ void	printmap(char **map, int row, int col);
 int	ft_err(int i, t_window *window);
 void	free_window(t_window *window);
 void	freemap(char **map, int row);
+void	free_img_arr(t_window	*window, void **arr, int size);
 
 //draw map
 
