@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 23:24:35 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/18 17:29:39 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 20:59:20 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ int	is_matris(char *str, t_window *window)
 	while (iter)
 	{
 		window->row++;
-		if ((int)ft_strlen(iter) != window->column + 1)
+		if (ft_strlen(iter) != (size_t)window->column + 1)
+		{
+			free(iter);
 			return (0);
+		}
 		free(iter);
 		iter = get_next_line(fd);
 	}

@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 23:24:35 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/18 17:54:13 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 20:58:59 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ int	is_matris(char *str, t_window *window)
 	{
 		window->row++;
 		if (ft_strlen(iter) != (size_t)window->column + 1)
+		{
+			free(iter);
 			return (0);
+		}
 		free(iter);
 		iter = get_next_line(fd);
 	}
