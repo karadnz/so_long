@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:52:58 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/18 17:57:30 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:11:45 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	is_dead(t_window *window, t_img *img)
 	return (0);
 }
 
-long long	millitimestamp(void)
+/*long long	millitimestamp(void)
 {
 	struct timeval	timeval;
 	long long		microtime;
@@ -82,4 +82,4 @@ long long	millitimestamp(void)
 	gettimeofday(&timeval, NULL);
 	microtime = timeval.tv_sec * 1000LL + timeval.tv_usec / 1000;
 	return (microtime);
-}
+}*/
