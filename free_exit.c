@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:03:43 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/18 17:30:39 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 21:24:31 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ int	ft_err(int i, t_window *window)
 	else if (i == 7)
 		write(1, "you won\n", 8);
 	else
-		write(1, "cikis!\n", 7);
-	system("leaks so_long");
+		write(1, "exit!\n", 7);
 	exit(1);
 }
 

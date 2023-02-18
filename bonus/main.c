@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:52:58 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/18 17:56:14 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 21:25:47 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	game_loop(t_window *window)
 		{
 			window->health--;
 			if (window->health == 0)
-				ft_err(-1, window);
+				ft_err(6, window);
 			window->dt = now;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:42:26 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/18 20:31:48 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 21:38:27 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void	ft_flood(t_window *window, char **map, int i, int j)
 {
 	if (i >= window->row || j >= window->column)
 		return ;
-	if (map[i][j] == '1' || map[i][j] == '2')
+	if (map[i][j] == '1' || map[i][j] == '2' || map[i][j] == 'E')
 		return ;
-	if (map[i][j] == 'P' || map[i][j] == 'E' || map[i][j] == 'C'
+	if (map[i][j] == 'P' || map[i][j] == 'C'
 		|| map[i][j] == '0')
 		map[i][j] = '2';
 	ft_flood(window, map, i + 1, j);

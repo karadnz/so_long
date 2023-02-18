@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 19:55:01 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/18 17:28:25 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 21:47:41 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,10 @@ int	is_pec(char c)
 		j = 0;
 		while (j < col)
 		{
+			printf("%c",map[i][j]);
 			j++;
 		}
-		//printf("\n");
+		printf("\n");
 		i++;
 	}
 }*/
