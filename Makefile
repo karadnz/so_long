@@ -42,6 +42,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(BNAME)
 	@cd ./gnl && $(MAKE) fclean
 
 re: fclean all
