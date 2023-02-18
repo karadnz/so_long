@@ -6,32 +6,11 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:42:26 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/18 23:21:15 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 23:57:48 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-#include <stdio.h>
-void	printmap(char **map, int row, int col);
-
-void	printmap(char **map, int row, int col)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < row)
-	{
-		j = 0;
-		while (j < col)
-		{
-			printf("%c",map[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-}
 
 int	map_check(int ac, char **av, t_window *window)
 {
@@ -62,7 +41,6 @@ int	is_valid(t_window *window)
 
 	flooded = get_copy(window);
 	ft_flood(window, flooded, get_p_xy(window, 'x'), get_p_xy(window, 'y'));
-	printmap(flooded, window->row, window->column);
 	rt = ft_is_left(window, flooded);
 	freemap(flooded, window->row);
 	return (rt);
