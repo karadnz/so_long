@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 17:50:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/18 15:43:00 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:00:28 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "gnl/get_next_line.h"
 
 # include <unistd.h>
-# include <stdio.h> //
+//# include <stdio.h> //
 # include <sys/time.h> //
 # include <fcntl.h> 
 # include <stdlib.h> //
@@ -177,6 +177,9 @@ void	right_handle(t_window *window);
 void	left_handle(t_window *window);
 int	can_exit(t_window *window);
 void	try_exit(t_window *window);
+
+//libftutils
+void	ft_putnbr_fd(int n, int fd);
 
 
 

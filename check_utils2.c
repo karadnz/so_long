@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 19:55:01 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/16 16:21:31 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 16:59:21 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	is_pec(char c)
 	return (0);
 }
 
-void	printmap(char **map, int row, int col)
+/*void	printmap(char **map, int row, int col)
 {
 	int	i;
 	int	j;
@@ -51,13 +51,12 @@ void	printmap(char **map, int row, int col)
 		j = 0;
 		while (j < col)
 		{
-			printf("%c", map[i][j]);
 			j++;
 		}
-		printf("\n");
+		//printf("\n");
 		i++;
 	}
-}
+}*/
 
 int	is_ber(char *str)
 {

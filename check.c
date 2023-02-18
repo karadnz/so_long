@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 22:42:26 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/16 14:35:20 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:00:28 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,16 @@ int	map_check(int ac, char **av, t_window *window)
 	return (1);
 }
 
+//printf("hit i: %d j: %d\n", window->row, window->column);
 int	is_valid(t_window *window)
 {
 	char	**flooded;
 	int		rt;
 
 	flooded = get_copy(window);
-	printf("hit i: %d j: %d\n", window->row, window->column);
-	printmap(flooded, window->row, window->column);
+	//printmap(flooded, window->row, window->column);
 	ft_flood(window, flooded, get_p_xy(window, 'x'), get_p_xy(window, 'y'));
-	printmap(flooded, window->row, window->column);
+	//printmap(flooded, window->row, window->column);
 	rt = ft_is_left(window, flooded);
 	freemap(flooded, window->row);
 	return (rt);

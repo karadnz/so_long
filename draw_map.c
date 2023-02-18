@@ -6,12 +6,13 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 01:37:23 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/16 14:50:27 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 16:56:21 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+//printf("Adim sayisi: %d\n", window->move_count);
 void	draw_map(t_window *window, t_img *img)
 {
 	draw_background(window, img);
@@ -21,7 +22,8 @@ void	draw_map(t_window *window, t_img *img)
 	draw_nums(window, img);
 	draw_pec(window, img);
 	draw_enemies(window, img);
-	printf("Adim sayisi: %d\n", window->move_count);
+	ft_putnbr_fd(window->move_count, 1);
+	write(1, "\n", 1);
 }
 
 void	draw_nums(t_window *window, t_img *img)

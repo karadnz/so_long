@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:03:43 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/18 16:07:43 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:12:12 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int	ft_err(int i, t_window *window)
 //free(window->mlx->font);
 	//free(window->mlx); //******
 	//free(window->mlx_win);
-	
 	//free(window);
 void	free_window(t_window *window)
 {
@@ -83,7 +82,6 @@ void	free_img_arr(t_window	*window, void **arr, int size)
 	i = 0;
 	while (i < size)
 	{
-		printf("AA\n\n\n");
 		mlx_destroy_image(window->mlx, arr[i]);
 		i++;
 	}
@@ -97,7 +95,6 @@ void	free_arr(void **arr, int size)
 	i = 0;
 	while (i < size)
 	{
-		printf("AA\n\n\n");
 		free(arr[i]);
 		i++;
 	}

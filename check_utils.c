@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 23:24:35 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/16 14:39:30 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 16:52:52 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 //close fd bak
 //printf("iter = $%s$ col: %d, row: %d\n", iter, window->column, window->row);
 //printf("%s, %d\n", iter, ft_strlen(iter));
+//printf(" col: %d, row: %d\n", window->column, window->row);
 int	is_matris(char *str, t_window *window)
 {
 	int		fd;
@@ -38,7 +39,6 @@ int	is_matris(char *str, t_window *window)
 	window->map = (char **)malloc(sizeof(char *) * window->row);
 	window->window_width = window->column * IMG;
 	window->window_height = window->row * IMG;
-	printf(" col: %d, row: %d\n", window->column, window->row);
 	close(fd);
 	return (window->row);
 }
@@ -51,7 +51,6 @@ void	init_matris(char *str, t_window *window)
 	int		fd;
 	int		i;
 
-	printf("hitINIT\n");
 	fd = open(str, O_RDWR);
 	if (!fd)
 		return ;
