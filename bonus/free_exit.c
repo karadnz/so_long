@@ -6,7 +6,7 @@
 /*   By: mkaraden <mkaraden@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:03:43 by mkaraden          #+#    #+#             */
-/*   Updated: 2023/02/18 21:24:36 by mkaraden         ###   ########.fr       */
+/*   Updated: 2023/02/18 23:23:55 by mkaraden         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	ft_err(int i, t_window *window)
 	else if (i == 3)
 		write(1, "Error at walls ok\n", 18);
 	else if (i == 4)
-		write(1, "invalid number of p,e,c!\n", 29);
+		write(1, "invalid number of p,e,c!\n", 25);
 	else if (i == 5)
 		write(1, "flood fail\n", 11);
 	else if (i == 6)
@@ -34,7 +34,7 @@ int	ft_err(int i, t_window *window)
 	else if (i == 7)
 		write(1, "you won\n", 8);
 	else
-		write(1, "exit!\n", 7);
+		write(1, "exit!\n", 6);
 	exit(1);
 }
 
